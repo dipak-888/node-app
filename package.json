@@ -1,0 +1,38 @@
+{
+  "name": "web-crawler",
+  "version": "1.0.0",
+  "description": "A Web crawler API",
+  "main": "server.js",
+  "author": "Amol Gaikwad",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cheerio": "^1.0.0-rc.2",
+    "config": "^1.31.0",
+    "connect-timeout": "^1.9.0",
+    "express": "^4.13.4",
+    "js-crawler": "^0.3.21",
+    "mongoose": "^4.4.15",
+    "morgan": "^1.7.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^2.0.7",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5",
+    "mkdirp": "^0.5.1",
+    "pm2": "^3.2.2",
+    "rimraf": "^2.6.2"
+  },
+  "scripts": {
+    "dev": "nodemon ./server/server.js",
+    "dev-test": "mocha --timeout 1000000 ./server/test/*.Test.js ",
+    "test": "npm run build && mocha ./build/test/*.Test.js --timeout 1000000 ",
+    "prebuild": "rimraf ./build",
+    "build": "mkdirp ./build && babel --out-dir ./build --source-maps --copy-files  ./server",
+    "start": "npm run build && node ./build/server.js"
+  }
+}
